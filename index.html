@@ -1,0 +1,502 @@
+<meta charset=utf-8>
+
+<style>
+* { margin: 0; padding: 0; border: 0; box-sizing: border-box; outline: 0; }
+body { background: radial-gradient(#def 50%, #abc) fixed; text-align: center; font-family: Arial; height: 100%; }
+#elements { padding: 20px 0 0 180px; }
+#elements a, #tube a { position: relative; transition: all .75s; top: 0; -moz-user-select: none; user-select: none; color: #222; text-decoration: none; cursor: move; width: 100px; height: 100px; padding: 10px 5px 0; margin: 5px; border-radius: 50%; background: #fff; border: 3px solid #d00; display: inline-block; vertical-align: top; box-shadow: 5px 5px 5px #555; }
+#tube a { top: -100px }
+h1 { font-size: 30px; margin: 15px 0; line-height: 10px; letter-spacing: -5px; text-indent: -5px; }
+h2 { font-size: 40px; font-family: Trebuchet MS; margin: 10px 0; }
+h3 { font-size: 14px; margin: 10px 0; }
+p { font-size: 14px; line-height: 16px }
+#tube { overflow: visible; box-shadow: 5px 5px 5px #888; position: fixed; top: 50%; display: block; float: left; margin: -150px 0 0 20px; width: 150px; height: 300px; background: none repeat-y right bottom #eef; border: 5px solid #456; border-top: 5px solid #456; background-image: linear-gradient(-20deg, transparent 5%, #456 5%, #456 25%, transparent 25%); background-size: 10px 20px; border-radius: 50% / 10px 10px 20px 20px; }
+#tube:before { z-index: 2; content: ""; width: 150px; height: 100px; display: block; border: 5px solid transparent; border-bottom: 5px solid #456; border-radius: 0 0 50% 50% / 0 0 15px 15px; position: fixed; left: 15px; top: 50%; margin-top: -240px; }
+#tube.x1 { padding-top: 150px; transition: all .5s }
+#tube.x1 a, #tube.x2 a:last-child { top: 0; }
+#tube.mixed { padding-top: 150px; }
+#tube.x2 { padding-top: 40px }
+#tube.x2.mix a:first-child, #tube.x2.nomix a:first-child { position: relative; top: 110px; }
+#tube.x2.mix a, #elements a.mix { background: #fff; color: #fff; border-color: #fff; box-shadow: 0px 0px 20px #fff; }
+#tube.x2.nomix a { background: #000; color: #000; border-color: #000; box-shadow: 0px 0px 20px #000; }
+#tube.x2.poof a { opacity: 0 }
+#elements a.combined { position: fixed; top: 50%; left: 40px }
+#buttons { padding: 20px; background: rgba(0,0,0,0.8); position: fixed; bottom: 0; width: 100%; }
+button { cursor: pointer; border: 3px solid #48c; background: #ddd; font-size: 16px; line-height: 16px; padding: 5px 10px; border-radius: 5px; }
+input { border: 3px solid #48c; background: #ddd; font-size: 16px; line-height: 16px; padding: 5px 10px; border-radius: 5px; }
+#elements a.end { transition: none }
+aside { position: fixed; top: -100px; left: 50%; opacity: 0; margin-left: -175px; z-index: 99; margin-top: -100px; transform: scale(.1); transition: all .5s; background: #def; border: 3px solid #48c; border-radius: 20px; width: 400px; padding: 20px; }
+aside.visible { top: 50%; opacity: 1; transform: scale(1.5); box-shadow: 0 0 0 9999px rgba(0,0,0,0.3) }
+.hidden { display: none!important; opacity: 0; transform:scale(2) } </style>
+
+<aside id=dialog_browser>
+<b>Welcome to AlcheMixer!</b>
+<br>
+Sorry, you must use Firefox or IE to play this game in good conditions!
+<br>
+<br>
+<button onclick=dialog_browser.className=''>OK!</button>
+</aside>
+
+<aside id=dialog_start>
+<b>Welcome to AlcheMixer!</b>
+<br>
+Drag & drop two elements in the test tube to create a new one!
+<br>
+<button onclick=dialog_start.className=''>OK!</button>
+</aside>
+
+<aside id=dialog_save>
+<b>You found a new element!</b>
+<br>
+The first of a long list.
+<br>
+To help you in your quest, you'll find a search engine and a save / load button on the bottom.
+<br>
+<button onclick="dialog_save.className=''; buttons.className = '';">OK!</button>
+</aside>
+
+<aside id=dialog_hint>
+<b>Congrats! You found 10 elements!</b>
+<br>
+You now have access to a "Hint" button!
+<br>
+<br>
+<button onclick=dialog_hint.className='';hint.style.display="">OK!</button>
+</aside>
+
+<aside id=dialog_human>
+<b>Whoa! You found 30 elements!</b>
+<br>
+Let's add the fifth element: the Human!
+<br>
+<br>
+<button onclick=dialog_human.className='';Human.className=''>OK!</button>
+</aside>
+
+<div id=tube>
+
+</div>
+
+<div id=elements>
+<h2>AlcheMixer</h2>
+<h3><span id=score>0</span> / 500 elements found</h3>
+<a ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)" href="javascript:;" draggable="true" class=hidden id="Human"><h1>👫</h1><p>Human</p></a><a id=Earth draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>♁</h1><p>Earth</p></a><a id=Water draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>💧</h1><p>Water</p></a><a id=Air draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>≈</h1><p>Air</p></a><a id=Fire draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>🔥</h1><p>Fire</p></a>
+</div>
+
+<br>
+<br>
+<br>
+
+<div id=buttons class=hidden>
+<input id=search placeholder=search>
+<button id=hint class=hidden onclick="this.innerHTML = hint()">Hint!</button>
+<button id=save class=hidden onclick="localStorage['alchemixer'] = elements.innerHTML; className = 'hidden'">Save</button>
+<button id=load class=hidden onclick="elements.innerHTML = localStorage['alchemixer']; className = 'hidden'">Load</button>
+<button onclick="window.open('http://twitter.com/home?status=' + encodeURIComponent('I found ' + score.innerHTML + ' elements in #AlcheMixer!\nGive it a try on js13kgames.com.\n#js13k .@MaximeEuziere\n' + window.location))">🐦</button>
+</div>
+<br>
+<br>
+<br>
+<script>
+
+// Load
+onload=function(){
+
+  // Dialog intro
+  if(navigator.userAgent.indexOf("Chrome") > -1 || navigator.userAgent.indexOf("Opera") > -1 || navigator.userAgent.indexOf("Chrome") > -1){
+    setTimeout("dialog_browser.className = 'visible'", 1000);
+  }
+  else{
+    if(!localStorage["alchemixer_start"]){
+      setTimeout("dialog_start.className = 'visible'", 1000);
+      localStorage["alchemixer_start"] = 1;
+    }
+  }
+  
+  
+  // Save/load
+  if(localStorage["alchemixer"]){
+    buttons.className="";
+    load.className="";
+  }
+}
+
+// Search
+search.value='';
+search.onkeyup=function(e){
+  els = document.querySelectorAll("#elements a");
+  if(search.value){
+    for(i=0;i<els.length;i++){
+      if(els[i].id.toLowerCase().indexOf(search.value.toLowerCase().replace(/ /g,"")) == -1){
+        els[i].style.display="none";
+      }
+      else{
+        els[i].style.display="inline-block";
+      }
+    }
+  }
+  else{
+    for(i=0;i<els.length;i++){
+      els[i].style.display="inline-block";
+    }
+  }
+}
+
+// ondragover must be handled like that to make ondrop work
+tube.ondragover = function(e){
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'copy';
+  return false;
+}
+
+// ondrop
+tube.ondrop = function(e){
+  e.stopPropagation();
+  tube.innerHTML = top[e.dataTransfer.getData('Text')].outerHTML + tube.innerHTML;
+  search.value = "";
+  search.onkeyup();
+  
+  // 1 element dropped
+  if(tube.children.length == 1){
+    setTimeout('tube.className = "x1"', 10);
+  }
+  
+  // 2 elements dropped
+  if(tube.children.length == 2){
+  
+    tube.className = "x2";
+    ok = 0;
+    
+    // Check the mix of the two
+    for(i = 0; i < mix.length; i += 4){
+      if(
+        ((mix[i + 1] == tube.children[0].id && mix[i + 2] == tube.children[1].id)
+        ||
+        (mix[i + 1] == tube.children[1].id && mix[i + 2] == tube.children[0].id))
+        &&
+        top[mix[i]] === undefined
+      )
+      {
+        setTimeout('tube.className += " mix"');
+        setTimeout(function(){
+          tube.className = "mixed";
+          tube.innerHTML = "";
+          elements.innerHTML += "<a class='combined mix' id=" + mix[i] + " draggable=true href=javascript:; ondragstart=\"event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)\" title='" + mix[i+1] + " + " + mix[i+2] + "'><h1>" + mix[i + 3] + "</h1><p>" + mix[i].replace(/([a-z])([A-Z])/g, "$1 $2") + "</p></a>";
+          setTimeout('top[mix[i]].className="combined";', 200);
+          setTimeout('top[mix[i]].className="end";', 800);
+        },500);
+        ok = 1;
+        
+        // Enable save
+        save.className = '';
+        
+        // Disable load
+        load.className = 'hidden';
+        
+        score.innerHTML = +score.innerHTML + 1;
+        
+        // Enable menu
+        if(+score.innerHTML == 1){
+          setTimeout("dialog_save.className = 'visible';",2000);
+        }
+        
+        // Enable hints
+        if(+score.innerHTML == 10){
+          dialog_hint.className = 'visible';
+        }
+        
+        // Enable human
+        if(+score.innerHTML == 30){
+          dialog_human.className = 'visible';
+        }
+        break;
+      }
+    }
+    
+    // No combination found
+    if(!ok){
+      setTimeout('tube.className += " nomix";', 200);
+      setTimeout('tube.className += " poof";', 800);
+      setTimeout('tube.className = ""; tube.innerHTML = "";', 1300);
+    }
+  }
+}
+
+// Hint
+hint = function(){
+  while(1){
+    rand = Math.ceil(Math.random() * mix.length) * 4;
+    if(top[mix[rand + 1]] && top[mix[rand + 2]] && !top[mix[rand]]){
+      return "Try to make " + mix[rand].replace(/([a-z])([A-Z])/g, "$1 $2") + "... New hint?";
+    }
+  }
+}
+
+// Combinations
+mix =
+[
+
+// Generation 1 (combinations of primary elements)
+"Dust","Earth","Air","⋯", // ok
+"Lava","Fire","Earth","~🔥~", // ok
+"Mud","Water","Earth","~🐷~", // ok
+"Pressure","Earth","Earth","--|  |--", // ok
+"Sea","Water","Water","ꕀ", // ok
+"Rain","Water","Air","☔", // ok
+"Steam","Water","Fire","☁", // ok
+"Energy","Air","Fire","҉", // ok
+
+// Generation 2 (combinations of elements of previous generations)
+"Gunpowder","Fire","Dust","⋯🔫", // ok
+"Stone","Water","Lava","❍", "Stone","Sea","Lava","❍", "Stone","Ocean","Lava","❍", // ok
+"Volcano","Earth","Lava","🌋", // ok
+"Brick","Fire","Mud","▭", "Brick","Air","Mud","▭", // ok
+"Wind","Air","Pressure","🍃", // ok
+"Ocean","Sea","Sea","ꕀꕀ<br>ꕀ", // ok
+"Flood","Rain","Rain","~☔~", // ok
+"Cloud","Air","Steam","☁☁☁", // ok
+"Earthquake","Energy","Earth","(( 😨 ))", // ok
+"Alcohol","Water","Energy","🍺", // ok
+"Plant","Rain","Earth","🌱", // ok
+"Geyser","Earth","Steam","ꖂ",// ok
+
+// Generation 3
+"Storm","Energy","Cloud","☁☁☁<br>⚡", // ok
+"Explosion","Fire","Gunpowder","💥", // ok
+"Eruption","Energy","Volcano","☁🌋☁", "Eruption","Lava","Volcano","☁🌋☁", "Eruption","Fire","Volcano","☁🌋☁", // ok
+"Isle","Volcano","Ocean","🌴", // ok
+"Wall","Brick","Brick","▭▭▭<br><br>▭▭", // ok
+"Hurricane","Energy","Wind","🌀","Hurricane","Wind","Wind","🌀",// ok
+"Wave","Wind","Sea","🌊","Wave","Wind","Water","🌊","Wave","Wind","Ocean","🌊",// ok
+"Tsunami","Earthquake","Ocean","🌊😓🌊",// ok
+"Sky","Cloud","Air","☀☁","Sky","Cloud","Sun","☀☁",// ok
+"Fog","Cloud","Earth","߉☁ &nbsp;𐌒",// ok
+"Mountain","Earthquake","Earth","◭◭",// ok
+"Metal","Fire","Stone","⚓",// ok
+"Sand","Air","Stone","⋯△⋯","Sand","Sea","Stone","⋯△⋯","Sand","Ocean","Stone","⋯△⋯","Sand","Water","Stone","⋯△⋯",// ok
+"Vodka","Water","Alcohol","🍶",// ok
+"Swamp","Mud","Plant","ˇ &nbsp; ˇ<br>ꕀꕀꕀ",// ok
+"Algae","Water","Plant","ꕀ🌿ꕀ","Algae","Sea","Plant","ꕀ🌿ꕀ","Algae","Ocean","Plant","ꕀ🌿ꕀ",// ok
+"Coal","Plant","Pressure","⚫",// ok
+"Cotton","Cloud","Plant","⚘",// ok
+"Moss","Plant","Stone","෴",// ok
+"Oxygen","Sun","Plant","⚛",// ok
+
+// Generation 4
+"Horizon","Sky","Ocean","☀<br><br>ꕀꕀꕀ",// ok
+"AtomicBomb","Energy","Explosion","💣",// ok
+"Fireworks","Sky","Explosion","🎆",// ok
+"Archipelago","Isle","Isle","🌴🌴🌴",// ok
+"Sound","Wave","Air","♫",// ok
+"Sun","Fire","Sky","☀",// ok
+"River","Water","Mountain","◭🌊◭",// ok
+"Blade","Stone","Metal","⚔",// ok
+"Sandstone","Sand","Stone","⋯❍⋯",// ok
+"Boiler","Metal","Steam","⍞",// ok
+"Bullet","Gunpowder","Metal","≡ ⫐",// ok
+"Electricity","Energy","Metal","⌁🔌",// ok
+"Quicksilver","Water","Metal","☿",// ok
+"Beach","Water","Sand","🌊🌴",// ok
+"Desert","Sand","Sand","⋯ᐱᐱ⋯",// ok
+"Cactus","Plant","Sand","🌵",// ok
+"Clay","Sand","Swamp","🍯", "Clay","Mud","Sand","🍯",// ok
+"Life","Energy","Swamp","♥",// ok
+"Diamond","Coal","Pressure","◇",// ok
+"Oil","Sunflower","Pressure","ஃ", "Oil","Coal","Water","ஃ",// ok
+"Grass","Earth","Moss","෴","Grass","Earth","Plant","෴",// ok
+"Fern","Moss","Swamp","🌿",// ok
+
+// Generation 5
+"Salt","Sun","Ocean","ϴ", "Salt","Sun","Sea","ϴ",// ok
+"Gun","Metal","Bullet","<div style='text-align:left;margin:-20px 0 0 20px'>,____,<br><br><br>//'<br>~</div>",// ok
+"Sword","Metal","Blade","⚔",// ok
+"Pottery","Fire","Clay","🍯",// ok
+"Oasis","Water","Desert","⋯🌴⋯",// ok
+"Pyramid","Desert","Stone","⋯◮⋯",// ok
+"Flower","Sun","Grass","❀", "Flower","Plant","Garden","❀",// ok
+"Scythe","Blade","Grass","レ",// ok
+"Dew","Grass","Fog","҈",// ok
+"Ring","Diamond","Metal","◎",// ok
+"Napalm","Fire","Oil","☁💥☁",// ok
+"Tobacco","Fire","Plant","🚬",// ok
+"RadioWave","Electricity","Air","",
+
+// Generation 6
+"Glass","Electricity","Sand","🍷", "Glass","Fire","Sand","🍷",// ok
+"Lightsaber","Energy","Sword","<span style=font-size:17px>╣=========","Lightsaber","Light","Sword","<span style=font-size:17px>╣=========",// ok
+"Hay","Scythe","Grass","❍ &nbsp; 🐑",// ok
+"Garden","Flower","Flower","🌻 💮<br><br>🌺","Garden","Flower","Grass","🌻 💮<br><br>🌺","Garden","Plant","Grass","🌻 💮<br><br>🌺",// ok
+"Sunflower","Sun","Flower","🌻",// ok
+
+// Generation 7
+"Scissors","Blade","Blade","✂",// ok
+"LightBulb","Electricity","Glass","💡",// ok
+"MagnifyingGlass","Metal","Glass","🔍",// ok
+"Time","Sand","Glass","⏰",
+"Eyeglasses","Glass","Glass","👓",// ok
+"Aquarium","Water","Glass","( &nbsp; 🐟 &nbsp; )<br>___",// ok
+"Ice","Glass","Water","❒<br><br>❒❒","Ice","Water","Cold","❒<br><br>❒❒",// ok
+"Needle","Hay","Metal","~ &nbsp; &nbsp; &nbsp; &nbsp; <br>╿",// ok
+"Human","Garden","Life","?",
+
+// Generation 8
+"Light","Electricity","LightBulb","⪫💡⪪",// ok
+"Sunglasses","Sun","Glass","😎","Sunglasses","Sun","Eyeglasses","😎",// ok
+"Sunglasses","Sun","Glass","😎","Sunglasses","Sun","Eyeglasses","😎",// ok
+"Lamp","LightBulb","Metal","<div style=margin-top:-35px>__<br><br><br>/___\\<br><br><br>(_)",// ok
+"Hail","Cloud","Ice","<div style=margin-top:-10px>| |<br><br><br>ߋ",// ok
+"Iceberg","Sea","Ice","~⧍~","Iceberg","Ocean","Ice","~⧍~",// ok
+"Clock","Electricity","Time","?",
+
+// Generation 9
+//"Lighthouse","Light","Ocean","𝟙","Lighthouse","Light","Sea","𝟙", // bof
+
+// Generation Human + 1
+"Blood","Human","Blade","?",
+"CarbonDioxide","Human","Air","?",
+"Cold","Rain","Human","?","Sickness","Rain","Human","?", // DISAMBIGUATE
+"Corpse","Fire","Human","?","Corpse","Human","Gun","?",
+"Drunk","Human","Alcohol","?",
+"Electrician","Electricity","Human","?",
+"Tools","Metal","Human","?",
+"Fireman","Fire","Human","?",
+"House","Brick","Human","?",
+"Hut","Stone","Human","?",
+"Idea","Light Bulb","Human","?",
+"Jedi","Lightsaber","Human","?",
+"Love","Human","Human","?","Sex","Human","Human","?",//DISAMBIGUATE
+"Music","Sound","Human","?",
+"Nerd","Glasses","Human","?",
+"Scarecrow","Human","Hay","?",
+"Surfer","Wave","Human","?",
+"Warrior","Sword","Human","?",
+"Watch","Human","Clock","?",
+"Wizard","Energy","Human","?",
+"Death","Human","Life","",
+
+// Generation Human + 2
+"Engineer","Human","tools","?",
+"Shark","Blood","Ocean","?",
+"Vampire","Blood","Human","?",
+"Fridge","Metal","Cold","?",
+"Snow","Rain","Cold","?",
+"Frankenstein","Electricity","Corpse","?",
+"Grave","Earth","Corpse","?",
+"Mummy","Pyramid","Corpse","?",
+"Skeleton","Time","Corpse","?","Bone","Time","Corpse","?",//DISAMBIGUATE
+"Zombie","Life","Corpse","",
+"Umbrella","Rain","tools","?",
+"Computer","Nerd","tools","?",
+"Field","Earth","tools","?",
+"LawnMower","tools","Grass","?",
+"Pitchfork","tools","Hay","?",
+"Statue","Stone","tools","?",
+"Thread","Cotton","tools","?",
+"Family","Human","House","?",
+"Igloo","Ice","House","?",
+"Skyscraper","House","Glass","?","Skyscraper","Sky","House","?",
+"Village","House","House","?",
+"Windmill","Wind","House","?",
+"Ash","Fire","House","▲","Ash","Fire","Human","▲","Ash","Fire","Wood","▲",
+"Rose","Love","Plant","?",
+"Styx","Water","Death","",
+
+// Generation Human + 3
+"Bat","Vampire","Air","","Bat","Sky","Mouse","?",
+"Avalanche","Energy","Snow","?",
+"Snowball","Human","Snow","?","Snowman","Snow","Human","?",//DISAMBIGUATE
+"Gravestone","Stone","Grave","?",
+"Graveyard","Grave","Grave","?",
+"Internet","Computer","Computer","?",
+"AI","Computer","Life","",
+"Cyborg","Computer","Human","?",
+"Farmer","Human","Field","?",
+"Fountain","Statue","Water","?",
+"Fabric","Thread","tools","?",
+"City","Village","Village","?",
+"WindTurbine","Windmill","Electricity","?",
+
+// Generation Human + 4
+"Batman","Bat","Human","?",
+"Cyberspace","Internet","Life","",
+"Farm","Farmer","House","?","Farm","Farmer","Barn","?",
+"Clothes","Fabric","Human","?",
+"Wire","Electricity","Metal","?",
+
+// Generation Human + 5
+"Livestock","Life","Farmer","?",
+"Dynamite","Wire","Gunpowder","?",
+
+// Generation Human + 6
+"Goat","Livestock","Mountain","?",
+"Horse","Hay","Livestock","?",
+"Pig","Mud","Livestock","?",
+"Sheep","Cloud","Livestock","?",
+"Barn","House","Livestock","?",
+"Cow","Livestock","Grass","?",
+
+// 7
+"Faun","Human","Goat","?",
+"Hippo","Horse","River","?",
+"Seahorse","Horse","Ocean","?",
+"Centaur","Human","Horse","?",
+"Bacon","Fire","Pig","?",
+"Wool","Sheep","tools","?",
+"Leather","Blade","Cow","?",
+"Manatee","Cow","Sea","?",
+"Meat","tools","Cow","?",
+"Milk","Farmer","Cow","?",
+"Minotaur","Cow","Human","?",
+
+// 8
+"Sweater","Wool","tools","?","Fabric","Tools","Wool","?",//DISAMBIGUATE
+"Saddle","Horse","Leather","?",
+"Ham","Meat","Smoke","?",
+"Steak","Fire","Meat","?",
+"Butcher","Human","Meat","?",
+"Butter","Milk","Pressure","?",
+"Cheese","Time","Milk","?",
+"IceCream","Cold","Milk","?","IceCream","Ice","Milk","?",
+
+// 9
+"Moon","Sky","Cheese","?",
+"MilkShake","Milk","IceCream","?",
+
+// 10
+"Night","Time","Moon","?",
+"Tide","Moon","Sea","?",
+"Astronaut","Human","Moon","?",
+"Eclipse","Sun","Moon","?",
+
+// 11
+"Star","Night","Sky","?",
+"Twilight","Day","Night","?",
+"Ghost","Graveyard","Night","?",
+
+// 12
+"BlackHole","Star","Pressure","?",
+"Constellation","Star","Star","?","Galaxy","Star","Star","?",//DISAMBIGUATE
+"Shuriken","Star","Blade","?",
+"Space","Star","Sky","?",
+
+// 13
+"Ninja","Human","Shuriken","?",
+"Planet","Earth","Space","?",
+"Void","Space","Space","?",
+"Meteoroid","Stone","Space","?",
+"MilkyWay","Milk","Space","?",
+
+// 14
+"SolarSystem","Sun","Planet","?",
+"Alien","Life","Void","?","Alien","Space","Life","?",
+"Lightbulb","Void","Glass","?",
+"Radiowave","Void","Electricity","?",
+
+// 15
+"TV","Lightbulb","Radiowave","?",
+"Radar","Air","Radiowave","",
+
+]
+
+</script>
