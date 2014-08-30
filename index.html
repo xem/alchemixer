@@ -53,7 +53,7 @@ The first of a long list.
 <br>
 To help you in your quest, you'll find a search engine and a save / load button on the bottom.
 <br>
-<button onclick="dialog_save.className=''; buttons.className = '';">OK!</button>
+<button onclick="dialog_save.className=''; buttons.className = ''; search.className = ''; ">OK!</button>
 </aside>
 
 <aside id=dialog_hint>
@@ -89,10 +89,10 @@ Let's add the fifth element: the Human!
 <br>
 
 <div id=buttons class=hidden>
-<input id=search placeholder=search>
-<button id=hint class=hidden onclick="this.innerHTML = hint()">Hint!</button>
+<input id=search placeholder=search class=hidden>
+<button id=hint class=hidden onclick="this.innerHTML = show_hint()">Hint!</button>
 <button id=save class=hidden onclick="localStorage['alchemixer'] = elements.innerHTML; className = 'hidden'">Save</button>
-<button id=load class=hidden onclick="elements.innerHTML = localStorage['alchemixer']; className = 'hidden'">Load</button>
+<button id=load class=hidden onclick="elements.innerHTML = localStorage['alchemixer']; className = 'hidden'; search.className = ''; if(+score.innerHTML >= 10) hint.className = ''; if(+score.innerHTML >= 30) Human.className = 'visible'; search.focus();">Load</button>
 <button onclick="window.open('http://twitter.com/home?status=' + encodeURIComponent('I found ' + score.innerHTML + ' elements in #AlcheMixer!\nGive it a try on js13kgames.com.\n#js13k .@MaximeEuziere\n' + window.location))">🐦</button>
 </div>
 <br>
@@ -113,13 +113,14 @@ onload=function(){
       localStorage["alchemixer_start"] = 1;
     }
   }
-  
-  
+
   // Save/load
   if(localStorage["alchemixer"]){
     buttons.className="";
     load.className="";
   }
+  
+  search.focus();
 }
 
 // Search
@@ -203,12 +204,12 @@ tube.ondrop = function(e){
         
         // Enable hints
         if(+score.innerHTML == 10){
-          dialog_hint.className = 'visible';
+          setTimeout("dialog_hint.className = 'visible'",2000);
         }
         
         // Enable human
         if(+score.innerHTML == 30){
-          dialog_human.className = 'visible';
+          setTimeout("dialog_human.className = 'visible'",2000);
         }
         break;
       }
@@ -221,10 +222,12 @@ tube.ondrop = function(e){
       setTimeout('tube.className = ""; tube.innerHTML = "";', 1300);
     }
   }
+  
+  search.focus();
 }
 
 // Hint
-hint = function(){
+show_hint = function(){
   while(1){
     rand = Math.ceil(Math.random() * mix.length) * 4;
     if(top[mix[rand + 1]] && top[mix[rand + 2]] && !top[mix[rand]]){
@@ -259,7 +262,7 @@ mix =
 "Earthquake","Energy","Earth","(( 😨 ))", // ok
 "Alcohol","Water","Energy","🍺", // ok
 "Plant","Rain","Earth","🌱", // ok
-"Geyser","Earth","Steam","ꖂ",// ok
+"Geyser","Earth","Steam","ꖂ",// bof
 
 // Generation 3
 "Storm","Energy","Cloud","☁☁☁<br>⚡", // ok
@@ -275,13 +278,12 @@ mix =
 "Mountain","Earthquake","Earth","◭◭",// ok
 "Metal","Fire","Stone","⚓",// ok
 "Sand","Air","Stone","⋯△⋯","Sand","Sea","Stone","⋯△⋯","Sand","Ocean","Stone","⋯△⋯","Sand","Water","Stone","⋯△⋯",// ok
-"Vodka","Water","Alcohol","🍶",// ok
+"Vodka","Water","Alcohol","🍶",// bof
 "Swamp","Mud","Plant","ˇ &nbsp; ˇ<br>ꕀꕀꕀ",// ok
 "Algae","Water","Plant","ꕀ🌿ꕀ","Algae","Sea","Plant","ꕀ🌿ꕀ","Algae","Ocean","Plant","ꕀ🌿ꕀ",// ok
 "Coal","Plant","Pressure","⚫",// ok
 "Cotton","Cloud","Plant","⚘",// ok
 "Moss","Plant","Stone","෴",// ok
-"Oxygen","Sun","Plant","⚛",// ok
 
 // Generation 4
 "Horizon","Sky","Ocean","☀<br><br>ꕀꕀꕀ",// ok
@@ -303,11 +305,11 @@ mix =
 "Clay","Sand","Swamp","🍯", "Clay","Mud","Sand","🍯",// ok
 "Life","Energy","Swamp","♥",// ok
 "Diamond","Coal","Pressure","◇",// ok
-"Oil","Sunflower","Pressure","ஃ", "Oil","Coal","Water","ஃ",// ok
-"Grass","Earth","Moss","෴","Grass","Earth","Plant","෴",// ok
+"Grass","Earth","Moss","෴","Grass","Earth","Plant","෴෴",// ok
 "Fern","Moss","Swamp","🌿",// ok
 
 // Generation 5
+"Oxygen","Sun","Plant","⚛",// ok
 "Salt","Sun","Ocean","ϴ", "Salt","Sun","Sea","ϴ",// ok
 "Gun","Metal","Bullet","<div style='text-align:left;margin:-20px 0 0 20px'>,____,<br><br><br>//'<br>~</div>",// ok
 "Sword","Metal","Blade","⚔",// ok
@@ -318,9 +320,8 @@ mix =
 "Scythe","Blade","Grass","レ",// ok
 "Dew","Grass","Fog","҈",// ok
 "Ring","Diamond","Metal","◎",// ok
-"Napalm","Fire","Oil","☁💥☁",// ok
 "Tobacco","Fire","Plant","🚬",// ok
-"RadioWave","Electricity","Air","",
+"RadioWave","Electricity","Air","(( 📻 ))", //ok
 
 // Generation 6
 "Glass","Electricity","Sand","🍷", "Glass","Fire","Sand","🍷",// ok
@@ -333,24 +334,21 @@ mix =
 "Scissors","Blade","Blade","✂",// ok
 "LightBulb","Electricity","Glass","💡",// ok
 "MagnifyingGlass","Metal","Glass","🔍",// ok
-"Time","Sand","Glass","⏰",
+"Time","Sand","Glass","ⴵ",
 "Eyeglasses","Glass","Glass","👓",// ok
 "Aquarium","Water","Glass","( &nbsp; 🐟 &nbsp; )<br>___",// ok
 "Ice","Glass","Water","❒<br><br>❒❒","Ice","Water","Cold","❒<br><br>❒❒",// ok
 "Needle","Hay","Metal","~ &nbsp; &nbsp; &nbsp; &nbsp; <br>╿",// ok
-"Human","Garden","Life","?",
+"Oil","Sunflower","Pressure","ஃ", "Oil","Coal","Water","ஃ",// ok
 
 // Generation 8
+"Napalm","Fire","Oil","☁💥☁",// ok
 "Light","Electricity","LightBulb","⪫💡⪪",// ok
-"Sunglasses","Sun","Glass","😎","Sunglasses","Sun","Eyeglasses","😎",// ok
 "Sunglasses","Sun","Glass","😎","Sunglasses","Sun","Eyeglasses","😎",// ok
 "Lamp","LightBulb","Metal","<div style=margin-top:-35px>__<br><br><br>/___\\<br><br><br>(_)",// ok
 "Hail","Cloud","Ice","<div style=margin-top:-10px>| |<br><br><br>ߋ",// ok
 "Iceberg","Sea","Ice","~⧍~","Iceberg","Ocean","Ice","~⧍~",// ok
-"Clock","Electricity","Time","?",
-
-// Generation 9
-//"Lighthouse","Light","Ocean","𝟙","Lighthouse","Light","Sea","𝟙", // bof
+"Clock","Electricity","Time","⏰",// ok
 
 // Generation Human + 1
 "Blood","Human","Blade","?",
@@ -436,7 +434,7 @@ mix =
 "Barn","House","Livestock","?",
 "Cow","Livestock","Grass","?",
 
-// 7
+// Generation Human + 7
 "Faun","Human","Goat","?",
 "Hippo","Horse","River","?",
 "Seahorse","Horse","Ocean","?",
@@ -449,7 +447,7 @@ mix =
 "Milk","Farmer","Cow","?",
 "Minotaur","Cow","Human","?",
 
-// 8
+// Generation Human + 8
 "Sweater","Wool","tools","?","Fabric","Tools","Wool","?",//DISAMBIGUATE
 "Saddle","Horse","Leather","?",
 "Ham","Meat","Smoke","?",
@@ -459,41 +457,41 @@ mix =
 "Cheese","Time","Milk","?",
 "IceCream","Cold","Milk","?","IceCream","Ice","Milk","?",
 
-// 9
+// Generation Human + 9
 "Moon","Sky","Cheese","?",
 "MilkShake","Milk","IceCream","?",
 
-// 10
+// Generation Human + 10
 "Night","Time","Moon","?",
 "Tide","Moon","Sea","?",
 "Astronaut","Human","Moon","?",
 "Eclipse","Sun","Moon","?",
 
-// 11
+// Generation Human + 11
 "Star","Night","Sky","?",
 "Twilight","Day","Night","?",
 "Ghost","Graveyard","Night","?",
 
-// 12
+// Generation Human + 12
 "BlackHole","Star","Pressure","?",
 "Constellation","Star","Star","?","Galaxy","Star","Star","?",//DISAMBIGUATE
 "Shuriken","Star","Blade","?",
 "Space","Star","Sky","?",
 
-// 13
+// Generation Human + 13
 "Ninja","Human","Shuriken","?",
 "Planet","Earth","Space","?",
 "Void","Space","Space","?",
 "Meteoroid","Stone","Space","?",
 "MilkyWay","Milk","Space","?",
 
-// 14
+// Generation Human + 14
 "SolarSystem","Sun","Planet","?",
 "Alien","Life","Void","?","Alien","Space","Life","?",
 "Lightbulb","Void","Glass","?",
 "Radiowave","Void","Electricity","?",
 
-// 15
+// Generation Human + 15
 "TV","Lightbulb","Radiowave","?",
 "Radar","Air","Radiowave","",
 

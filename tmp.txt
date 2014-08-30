@@ -1,0 +1,563 @@
+"Airplane","Air","Car","?",
+"Airplane","Metal","Bird","?",
+"Alarm Clock","Sound","Clock","?",
+"Alcohol","Time","Fruit","?",
+
+"Alligator","Swamp","Lizard","?",
+"Ambulance","Hospital","Car","?",
+"Angel","Bird","Human","?",
+"Ant","Beetle","Work","?",
+"Antibiotics","Medicine","Bacteria","?",
+"Apple","Flower","Tree","?",
+"Armor","Metal","tools","?",
+"Assassin","Poisoned Weapon","Human","?",
+"Astronaut","Human","Rocket","?",
+"Axe","Blade","Wood","?",
+"Bacteria","Life","Swamp","?",
+"Baker","Human","Bread","?",
+"Banana","Monkey","Fruit","?",
+"Bank","House","Gold","?","Bank","House","Money","?","Bank","Money","Skyscraper","?",
+
+
+
+"Batter","Flour","Milk","?",
+"BBQ","Campfire","Meat","?","BBQ","Campfire","Garden","?",
+"Beaver","Wild Animal","Wood","?",
+"Bee","Flour","Wild Animal","?",
+"Beehive","House","Bee","?",
+"Beer","Alcohol","Wheat","?",
+"Beetle","Earth","Worm","?",
+"Bicycle","Wheel","Wheel","?",
+"Bird","Egg","Air","?","Bird","Sky","Egg","?",
+"Birdhouse","Bird","House","?",
+
+"Blizzard","Snow","Wind","?",
+"Blood","Beast","Hunter","?",
+"Boat","Water","Wood","?",
+"Book","Feather","Paper","?","Book","Paper","Wood","?",
+"Bread","Dough","Fire","?",
+"Bridge","River","Wood","?",
+
+
+"Butterfly","Air","Worm","?",
+"Butterfly","Flower","Wild Animal","?",
+"Cake","Dough","Candle","?",
+"Camel","Desert","Wild Animal","?",
+"Campfire","Fire","Wood","?",
+"Candle","Fire","Wax","?",
+"Candy Cane","Sugar","Christmas Tree","?",
+"Cannon","Gunpowder","Pirate Ship","?","Cannon","Gunpowder","Castle","?",
+"Car","Cart","Oil","?","Car","Metal","Wheel","?",
+"Caramel","Fire","Sugar","?",
+"Cart","Wheel","Wood","?",
+"Castle","Knight","House","?",
+"Cat","Beast","House","?","Cat","Wild Animal","Milk","?",
+"Catnip","Cat","Plant","?",
+"Caviar","Fish","Egg","?","Caviar","Human","Hard Roe","?",
+"CD","Book","Laser","?",
+"Cellphone","Computer","Radiowave","?",
+"Cement","Clay","Limestone","?",
+"Censored","Sex","Sex","?",
+
+"Ceramics","Clay","Human","?",
+"Cereal","Milk","Wheat","?",
+"Chainsaw","Electricity","Axe","?",
+"Chameleon","Rainbow","Lizard","?",
+"Charcoal","Fire","Wood","?",
+"Chariot","Beast","Cart","?",
+"Cheese","Bacteria","Milk","?",
+
+"Cheeseburger","Hamburger","Cheese","?",
+"Chicken","Bird","Livestock","?",
+"Chimney","House","Fireplace","?",
+"Chocolate Milk","Chocolate","Milk","?",
+"Chocolate","Willy Wonka","River","?",
+"Christmas Stocking","Fireplace","Wool","?",
+"Christmas Tree","Light bulb","Tree","?",
+"Cigarette","Paper","Tobacco","?",
+
+
+"Coal","Fire","Wood","?",
+"Coconut Milk","Coconut","tools","?",
+"Coconut","Palm","Fruit","?",
+"Coffee","Energy","Seeds","?",
+"Coffin","Wood","Corpse","?",
+"Commandments","angel","stone","?",
+"Computer Mouse","Computer","Mouse","?",
+"Computer","Book","TV","?",
+"Concrete","Cement","Water","?",
+"Confetti","Paper","Scissors","?",
+"Confetti","Paper","Blade","?",
+
+"Cookie Dough","Cookie","Dough","?",
+"Cookie","Sugar","Dough","?",
+"Cookies","Sugar","Bread","?",
+"Cotton Candy","Sugar","Electricity","?",
+
+"Credit Card","Debt","Money","?",
+"Crow","Bird","Scarecrow","?",
+"Crow","Bird","Field","?",
+"Crystal Ball","Glass","Witch","?",
+"Cuckoo","Clock","Bird","?",
+"Cyborg","Human","Robot","?",
+"Cyclist","Human","Bicycle","?",
+"Dam","Beaver","River","?",
+"Darth Vader","Jedi","Fire","?",
+"Day","Sun","Time","?",
+"Debt","Money","Bank","?",
+"Demigod","Wizard","Energy","?",
+"Dinosaur","Egg","Earth","?",
+"Dinosaur","Time","Lizard","?",
+"Doctor","Hospital","Human","?",
+"Dog","Beast","House","?",
+"Dog","Wild Animal","Human","?",
+"Doghouse","Dog","House","?",
+"Dolphin","Beast","Fish","?",
+"Domestic Animal","Beast","Human","?",
+"Donut","Dough","Oil","?",
+"Double Rainbow!","Rainbow","Rainbow","?",
+"Dough","Flour","Water","?",
+"Dragon","Air","Dinosaur","?",
+"Dragon","Fire","Lizard","?",
+"Drum","Leather","Wood","?",
+"Dry Ice","Carbon Dioxide","Cold","?",
+"Duck","Water","Bird","?",
+"Eagle","Mountain","Bird","?",
+
+"Egg Timer","Egg","Clock","?",
+"Egg","Stone","Life","?",
+"Electric Car","Electricity","Car","?",
+"Electric Eel","Electricity","Fish","?",
+"Email","Letter","Computer","?",
+
+
+
+
+
+"Feather","Hunter","Bird","?",
+"Fence","Wood","Wall","?",
+"Fertilizer","Domestic Animal","Grass","?",
+"Firearm","Weapon","Gunpowder","?",
+"Fireplace","Campfire","House","?",
+"Firetruck","Fireman","Car","?",
+"Fish","Snake","Water","?",
+"Fish","Time","Hard Roe","?",
+"Fishing Rod","Fish","tools","?",
+"Fishing Rod","Fish","Wood","?",
+"Flashlight","toolsLight","?",
+"Flour","Stone","Wheat","?",
+"Flute","Wind","Wood","?",
+"Flying Fish","Bird","Fish","?",
+"Flying Squirrel","Bird","Squirrel","?",
+"Forest","Tree","Tree","?",
+"Fossil","Dinosaur","Earth","?",
+"Fox","Chicken","Wild Animal","?",
+"Freezer","Mechanism","Ice","?",
+"Frigate","Fabric","Ship","?",
+"Frozen Yogurt","Cold","Yogurt","?",
+"Fruit Tree","Fruit","Tree","?",
+"Fruit","Tree","Farmer","?",
+"Fun Dip","Sugar","Sand","?",
+
+"Fun","Human","Sex","?",
+"Games","Fun","Law","?",
+
+"Ghoul","Corpse","Zombie","?",
+"Gift","Santa","Chimney","?",
+"Glasshouse","Plant","Glass","?",
+
+"Godzilla","Dinosaur","City","?",
+"Gold","Philosophers Stone","Metal","?",
+"Goldfish","Fish","Cheese","?",
+"Golem","Life","Clay","?",
+"Grim Reaper","Scythe","Human","?",
+"Guiness Float","Beer","Ice Cream","?",
+"Hacker","Virus","Computer","?",
+
+"Hamburger","Meat","Bread","?",
+"Hangover","Vodka","Beer","?",
+"Hard Roe","Water","Egg","?",
+"Helicopter","Airplane","Blade","?",
+"Hero","Dragon","Knight","?",
+"Hero","Dragon","Warrior","?",
+"Honey","Bee","Flower","?",
+
+"Hospital","Sickness","House","?",
+"House","Bricks","Concrete","?",
+"Human","Earth","Life","?",
+"Human","Life","Beast","?",
+"Hummingbird","Flower","Bird","?",
+"Hunter","Human","Weapon","?",
+
+"Jack-O-Lantern","Fire","Pumpkin","?",
+"Jam","Fruit","Sugar","?",
+"Journalist","Typewriter","Human","?",
+"Juice","Pressure","Fruit","?",
+"Juicy Fruit","Juice","Fruit","?",
+"King","Human","Castle","?",
+"King","Human","Excalibur","?",
+"Kite","Paper","Wind","?",
+"Knight","Armor","Human","?",
+"Knowledge","Book","Human","?",
+"Laser","Radiowave","Fire","?",
+"Law","Human","Religion","?",
+"Leaf","Tree","Wind","?",
+"Lemonade","Water","Fruit","?",
+"Letter","Paper","Pencil","?",
+
+"Limestone","Shell","Stone","?",
+"Lion","Cat","Wild Animal","?",
+
+"Lizard","Egg","Swamp","?",
+"Lizard","Swamp","Egg","?",
+"Locomotive","Steam Engine","Cart","?",
+"Lumberjack","Human","Axe","?",
+
+"Map","Paper","Earth","?",
+"Marshmallow","Sugar","Campfire","?",
+"Mayonnaise","Egg","Oil","?",
+
+"Mechanism","Law","Tools","?",
+"Medicine","Knowledge","Virus","?",
+"Medusa","Human","Snake","?",
+"Mermaid","Human","Fish","?",
+"Meteor","Atmosphere","Meteoroid","?",
+
+
+"Milk","Domestic Animal","Grass","?",
+
+
+
+"Money","Paper","Gold","?",
+"Monkey","Wild Animal","Tree","?",
+
+"Moss","Weeds","Swamp","?",
+"Motorcycle","Bicycle","Energy","?",
+"Mounds","Chocolate","Coconut","?",
+"Mouse","Wild Animal","Cheese","?",
+"Mousetrap","Cheese","Wood","?",
+"Mushroom","Earth","Weeds","?",
+"Music","Human","Reed","?",
+"Narwhal","Ocean","Unicorn","?",
+"Nerds","Sugar","Nerd","?",
+"Nest","Bird","Tree","?",
+"Newspaper","Paper","Paper","?",
+
+
+"Nuclear Bomb","Plutonium","Weapon","?",
+"Octopus","Fish","Knowledge","?",
+"Omelette","Fire","Egg","?",
+"Orchard","Fruit Tree","Fruit Tree","?",
+"Origami","Bird","Paper","?",
+"Ostrich","Bird","Earth","?",
+"Owl","Night","Bird","?",
+"Palm","Isle","Tree","?",
+"Palm Tree","Sand","Tree","?",
+"Paper Airplane","Paper","Airplane","?",
+"Paper","Reed","Tools","?",
+"Paper","Wood","Pressure","?",
+"Parrot","Pirate","Bird","?",
+"Pasta","Egg","Flour","?",
+"Peacock","Bird","Rainbow","?",
+"Peeps","Sugar","Chicken","?",
+"Pegasus","Horse","Bird","?",
+"Pencil","Charcoal","Wood","?",
+"Penguin","Ice","Bird","?",
+"Petroleum","Fossil","Pressure","?",
+"Petroleum","Fossil","Time","?",
+"Philosophers Stone","Demigod","Quicksilver","?",
+"Phoenix","Bird","Fire","?",
+"Picnic","Sandwich","Grass","?",
+"Pie","Apple","Dough","?",
+"Pie","Dough","Fruit","?",
+
+"Pigeon","Letter","Bird","?",
+"Pilot","Airplane","Human","?",
+"Pinocchio","Life","Wood","?",
+"Pipe","Wood","Tobacco","?",
+"Pirate Ship","Pirate","Boat","?",
+"Pirate","Alcoholic","Ship","?",
+"Pirate","Sword","Sailor","?",
+"Pizza","Cheese","Dough","?",
+
+"Plankton","Bacteria","Water","?",
+"Plankton","Water","Life","?",
+"Plasma","Energy","Fire","?",
+"Platypus","Duck","Beaver","?",
+"Plutonium","Radiation","Metal","?",
+"Poison","Snake","Tools","?",
+"Poisoned Weapon","Poison","Weapon","?",
+"Pokki","Computer","Squirrel","?",
+"Policeman","Law","Soldier","?",
+"Popsicle","Ice","Juice","?",
+"Printer","Computer","Paper","?",
+"Prism","Glass","Rainbow","?",
+"Pumpkin","Vegetable","Fire","?",
+"Pumpkin","Vegetable","Light","?",
+"Radiation","Radiowave","Radiowave","?",
+
+"Rainbow","Sun","Rain","?",
+"Rat","Medicine","Beast","?",
+"Rat","Wild Animal","Sailboat","?",
+"Red Vines","Sugar","Wire","?",
+"Reindeer","Santa","Wild Animal","?",
+"Religion","Human","Commandments","?",
+"Ring Pop","Diamond","Sugar","?",
+"Robot","Metal","Life","?",
+"Rock-n-Roll","Music","Alcohol","?",
+"Rocket","Airplane","Space","?",
+"Rocket","Void","Airplane","?",
+"Ruins","Time","Castle","?",
+"Rum","Vodka","Pirate","?",
+"Russian Roulette","Vodka","Firearm","?",
+
+"Sailboat","Wind","Boat","?",
+"Sailor","Human","Boat","?",
+"Saltpetre","Limestone","Fertilizer","?",
+"Sand Castle","Sand","Castle","?",
+"Sandpaper","Sand","Paper","?",
+"Sandwich","Bread","Ham","?",
+"Santa","Human","Christmas Tree","?",
+"Satellite","Void","Rocket","?",
+"Scalpel","Doctor","Blade","?",
+"Scientist","Human","Knowledge","?",
+"Scorpion","Sand","Beetle","?",
+"Scorpion","Wild Animal","Dune","?",
+"Seagull","Beach","Bird","?",
+
+"Seal","Dog","Sea","?",
+"Seaplane","Sea","Plane","?",
+"Seasickness","Sickness","Sea","?",
+"Seeds","Life","Sand","?",
+
+"Sheet Music","Music","Paper","?",
+"Shell","Stone","Plankton","?",
+"Ship","Wood","Boat","?",
+
+"Sin","Human","Religion","?",
+"Skateboard","Snowboard","Wheel","?",
+"Ski Goggles","Snow","Glasses","?",
+"Skittles","Rainbow","Sugar","?",
+"Sledge","Snow","Cart","?",
+"Sloth","Wild Animal","Time","?",
+"Smog","Fog","Smoke","?",
+"Smoke","Fire","Wood","?",
+"Snake","Wire","Wild Animal","?",
+"Snake","Worm","Swamp","?",
+"Snowboard","Snow","Wood","?",
+"Snowmobile","Cold","Car","?",
+"Snowmobile","Snow","Motorcycle","?",
+"Solar Cell","Sun","tools","?",
+
+"Soldier","Warrior","Firearm","?",
+
+"Spaceship","Astronaut","Airplane","?",
+"SpaceStation","House","Space","?",
+"Sphinx","Human","Lion","?",
+"Spider","Wild Animal","Thread","?",
+"Squirrel","Mouse","Tree","?",
+
+"Starburst","Rocket","Fruit","?",
+"Starfish","Star","Fish","?",
+
+"Steak","Meat","BBQ","?",
+"Steam Engine","Boiler","tools","?",
+"Steam Ship","Steam Engine","Ship","?",
+"Story","Human","Campfire","?",
+"Sugar","Energy","Juice","?",
+"Sugar","Reed","Field","?",
+"Sulfur","Bacteria","Swamp","?",
+"Sundial","Sun","Clock","?",
+"Sushi","Seaweed","Caviar","?",
+
+"Swedish Fish","Fish","Sugar","?",
+"Sweethearts","Love","Sugar","?",
+"Swimmer","Human","Swim Goggles","?",
+"Swordfish","Sword","Fish","?",
+"Tank","Car","Gun","?",
+"Tavern","Vodka","House","?",
+"Tea","Water","Leaf","?",
+"Tequila","Worm","Vodka","?",
+"Thunder Bird","Bird","Storm","?",
+
+"Titanic","Steamboat","Iceberg","?",
+"Toast","Fire","Sandwich","?",
+"Treant","Life","Tree","?",
+"Tree","Plant","Time","?",
+"Tree","Seeds","Earth","?",
+"Treehouse","Tree","House","?",
+"Trojan Horse","Wood","Horse","?",
+"Turtle","Sand","Egg","?",
+
+
+"Twix","Caramelo","Cookie","?",
+"UFO","Alien","Airplane","?",
+"Typewriter","Book","Mechanism","?",
+"UFO","Rocket","Alien","?",
+"Unicorn","Double Rainbow!","Life","?",
+"Vase","Plant","Pottery","?",
+"Vegetable","Fruit","Field","?",
+"Virus","Human","Bacteria","?",
+
+"Vulture","Bird","Corpse","?",
+"Wagon","Horse","Cart","?",
+"Wand","Wizard","Wood","?",
+"Warrior","Hunter","Weapon","?",
+"Water Pipe","Water","Pipe","?",
+"Wax","Bee","Beehive","?",
+"Weapons","Tools","Metal","?",
+"Web","Spider","Thread","?",
+"Weeds","Water","Life","?",
+"Werewolf","Beast","Vampire","?",
+"Werewolf","Wolf","Human","?",
+"Whale","Beast","Water","?",
+"Wheat","Field","Farmer","?",
+"Wheat","Seeds","Field","?",
+"Wheel","Wood","Tools","?",
+"White Russian","Milk","Vodka","?",
+"Wild Animal","Life","Forest","?",
+"Wild Boar","Pig","Wild Animal","?",
+"Willy Wonka","Engineer","Sugar","?",
+
+"Wine","Alcohol","Fruit","?",
+
+"Witch","Wizard","Broom","?",
+"Wolf","Wild Animal","Moon","?",
+"Wood","Tools","Tree","?",
+"Woodpecker","Bird","Wood","?",
+
+"Work","Human","Money","?",
+"Worm","Bacteria","Swamp","?",
+"Wrapping Paper","Gift","Paper","?",
+"Yoda","Jedi","Swamp","?",
+"Yogurt","Bacteria","Milk","?",
+*/
+/*
+Energy = Air + Fire
+Lava = Earth + Fire
+Fish = Beast + Water
+Rat = Beast + Diseases
+Dove = Air + Rat
+Wolf = Beast + Wrath
+Worm = Magic + Man
+Egg = Magic + Stone
+Piranha = Fish + Weapon
+Snake = Worm + Egg
+Friendship = Human + Human
+Soul = Human + Demon
+Resurrection = Soul + Corpse
+Life = Man + Woman
+Angel = Life + Light
+Prayer = Angel + Human
+Religion = Human + Prayer
+Heavens = Fire + Witch
+Suffering = Fire + Woman
+Sin = Human + Apple
+Diseases = Tobacco + Man
+Inferno = Human + Murder
+Magic = Demon + Energy
+Sect = Heresy + Religion
+Sex = Man + Woman
+Corpse = Human + Murder
+Witch = Woman + Magic
+Lawyer = Human + Copyright
+Politician = Human + Pride
+Food = Weapon + Beast
+Blood = Beast + Weapon
+Cthulhu = Demon + Water
+Demon = Beast + Darkness
+Cerberus = Beast + Death
+Zombie = Corpse + Life
+Werewolf = Man + Beast
+Mutant = Darkness + Human
+Dragon = Magic + Egg
+Hydra = Snake + Beast
+Seeds = Earth + Apple
+Coffee = Energy + Seeds
+Grass = Earth + Seeds
+Mushroom = Earth + Seeds
+Tree = Earth + Seeds
+Wrath = Fire + Cthulhu
+Murder = Sin + Corpse
+Greed = Sin + Money
+Theft = Sin + Money
+Envy = Sin + Greed
+Pride = Sin + Sin
+Lust = Sin + Sex
+Gluttony = Sin + Food
+Sloth = Sin + Work
+Heresy = Religion + Sin
+Knowledge = Human + Apple
+Book = Human + Knowledge
+Copyright = Demon + Order
+Gambling = Human + Greed
+Money = Demon + Soul
+Work = Man + Money
+Censored = Sex + Money
+Atheism = Human + Heresy
+Psychology = Human + Heresy
+War = Politician + Pride
+Sulfur = Air + Inferno
+Oil = Earth + Knowledge
+Acid = Sulfur + Water
+TNT = Oil + Acid
+Weapon = Metal + Human
+Poison = Tobacco + Coffee
+Bomb = TNT + Metal
+House = Stone + Human
+Mechanism = Metal + Work
+Nuclear Bomb = Bomb + Mushroom
+Car = Oil + Mechanism
+
+Robot = Sloth + Knowledge
+TV = Mechanism + Demon
+Computer = TV + Book
+Cellphone = Radio Wave + Computer
+Cyborg = Robot + AI
+Void = Heavens + Inferno
+Plasma = Fire + Energy
+Cellulose = Grass + Work
+Virus = Diseases + Human
+Radiation = Radiowave + Radiowave
+Laser = Radiowave + Fire
+
+UFO = Rocket + Alien
+Rocket = Void + Airplane
+Satellite = Void + Rocket
+
+Landmine = Earth + Bomb
+Airplane = Car + Air
+Bomber = Airplane + Bomb
+Cannon = Bomb + Weapon
+Battle Cruiser = Cannon + Water
+Helicopter = Air + Cannon
+Submarine = Battle Cruiser + Fish
+Tank = Car + Armor
+Scientist = Knowledge + Knowledge
+Soldier = Firearm + Warrior
+Corruption = Politician + Money
+
+
+Surveillance = War + Knowledge
+Terrorism = War + Chaos
+Army = War + Order
+Empire = Politician + Army
+Hacker = Knowledge + Hacker
+Warrior = Man + Wrath
+Firearm = Weapon + Gunpowder
+Flamethrower = Weapon + Fire
+AK-47 = Firearm + Magic
+Armor = Metal + Warrior
+Bazooka = Weapon + Missile
+Desert Eagle = Firearm + Pride
+Missile = Rocket + Bomb
+BFG 9000 = Weapon + Inferno
+Plasmagun = Plasma + Weapon
+Death Ray Gun = Weapon + Alien
+Disintegrator = Weapon + Void
+Force Field = Energy + Armor
+Death Star = Spaceship + City
+Lightsaber = Forcefield + Laser
+Spaceship = Rocket + Battle Cruiser
+Vacuum Bomb = Void + Bomb
+Space Marine = Soldier + Spaceship
