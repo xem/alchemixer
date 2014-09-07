@@ -74,14 +74,22 @@ Let's add the fifth element: the Human!
 <button onclick=dialog_human.className='';Human.className=''>OK!</button>
 </aside>
 
+<aside id=dialog_end>
+<b>Impressive! You found 150 elements!</b>
+<br>
+I didn't have the time to put more in the game for JS13Kgames 2014, but you can continue the mix on <a href=" http://xem/github.io/alchemixer">http://xem/github.io/alchemixer</a>! Thanks for playing!<br>
+<br>
+<button onclick=dialog_end.className=''>OK!</button>
+</aside>
+
 <div id=tube>
 
 </div>
 
 <div id=elements>
 <h2>AlcheMixer</h2>
-<h3><span id=score>0</span> / 500 elements found</h3>
-<a ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)" href="javascript:;" draggable="true" class=hidden id="Human"><h1>👫</h1><p>Human</p></a><a id=Earth draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>♁</h1><p>Earth</p></a><a id=Water draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>💧</h1><p>Water</p></a><a id=Air draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>≈</h1><p>Air</p></a><a id=Fire draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>🔥</h1><p>Fire</p></a>
+<h3><span id=score>0</span> / 150 elements found</h3>
+<a ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)" href="javascript:;" draggable="true" class=hidden id="Human"><h1>👫</h1><p>Human</p></a><a id=Earth draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>♁</h1><p>Earth</p></a><a id=Water draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>💦</h1><p>Water</p></a><a id=Air draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>≈</h1><p>Air</p></a><a id=Fire draggable=true href=javascript:; ondragstart="event.dataTransfer.effectAllowed='copy';event.dataTransfer.setData('Text',this.id)"><h1>🔥</h1><p>Fire</p></a>
 </div>
 
 <br>
@@ -93,7 +101,7 @@ Let's add the fifth element: the Human!
 <button id=hint class=hidden onclick="this.innerHTML = show_hint()">Hint!</button>
 <button id=save class=hidden onclick="localStorage['alchemixer'] = elements.innerHTML; className = 'hidden'">Save</button>
 <button id=load class=hidden onclick="elements.innerHTML = localStorage['alchemixer']; className = 'hidden'; search.className = ''; if(+score.innerHTML >= 10) hint.className = ''; if(+score.innerHTML >= 30) Human.className = 'visible'; search.focus();">Load</button>
-<button onclick="window.open('http://twitter.com/home?status=' + encodeURIComponent('I found ' + score.innerHTML + ' elements in #AlcheMixer!\nGive it a try on js13kgames.com.\n#js13k .@MaximeEuziere\n' + window.location))">🐦</button>
+<button onclick="window.open('http://twitter.com/home?status=' + encodeURIComponent('I found ' + score.innerHTML + ' elements in #AlcheMixer!\nGive it a try on js13kgames.com.\n#js13k .@MaximeEuziere\n' + window.location))">🐤</button>
 </div>
 <br>
 <br>
@@ -208,9 +216,18 @@ tube.ondrop = function(e){
         }
         
         // Enable human
-        if(+score.innerHTML == 30){
+        if(+score.innerHTML == 150){
           setTimeout("dialog_human.className = 'visible'",2000);
         }
+        
+        // End
+        if(+score.innerHTML == 30){
+          setTimeout("dialog_end.className = 'visible'",2000);
+        }
+        
+        // Scroll on bottom
+        document.body.scrollTop = 1e7;
+        
         break;
       }
     }
@@ -262,7 +279,6 @@ mix =
 "Earthquake","Energy","Earth","(( 😨 ))", // ok
 "Alcohol","Water","Energy","🍺", // ok
 "Plant","Rain","Earth","🌱", // ok
-"Geyser","Earth","Steam","ꖂ",// bof
 
 // Generation 3
 "Storm","Energy","Cloud","☁☁☁<br>⚡", // ok
@@ -278,7 +294,6 @@ mix =
 "Mountain","Earthquake","Earth","◭◭",// ok
 "Metal","Fire","Stone","⚓",// ok
 "Sand","Air","Stone","⋯△⋯","Sand","Sea","Stone","⋯△⋯","Sand","Ocean","Stone","⋯△⋯","Sand","Water","Stone","⋯△⋯",// ok
-"Vodka","Water","Alcohol","🍶",// bof
 "Swamp","Mud","Plant","ˇ &nbsp; ˇ<br>ꕀꕀꕀ",// ok
 "Algae","Water","Plant","ꕀ🌿ꕀ","Algae","Sea","Plant","ꕀ🌿ꕀ","Algae","Ocean","Plant","ꕀ🌿ꕀ",// ok
 "Coal","Plant","Pressure","⚫",// ok
@@ -321,7 +336,7 @@ mix =
 "Dew","Grass","Fog","҈",// ok
 "Ring","Diamond","Metal","◎",// ok
 "Tobacco","Fire","Plant","🚬",// ok
-"RadioWave","Electricity","Air","(( 📻 ))", //ok
+"RadioWave","Electricity","Air","(( 📻 ))", // ok
 
 // Generation 6
 "Glass","Electricity","Sand","🍷", "Glass","Fire","Sand","🍷",// ok
@@ -334,7 +349,7 @@ mix =
 "Scissors","Blade","Blade","✂",// ok
 "LightBulb","Electricity","Glass","💡",// ok
 "MagnifyingGlass","Metal","Glass","🔍",// ok
-"Time","Sand","Glass","ⴵ",
+"Time","Sand","Glass","ⴵ",// ok
 "Eyeglasses","Glass","Glass","👓",// ok
 "Aquarium","Water","Glass","( &nbsp; 🐟 &nbsp; )<br>___",// ok
 "Ice","Glass","Water","❒<br><br>❒❒","Ice","Water","Cold","❒<br><br>❒❒",// ok
@@ -349,152 +364,1928 @@ mix =
 "Hail","Cloud","Ice","<div style=margin-top:-10px>| |<br><br><br>ߋ",// ok
 "Iceberg","Sea","Ice","~⧍~","Iceberg","Ocean","Ice","~⧍~",// ok
 "Clock","Electricity","Time","⏰",// ok
+"TV","LightBulb","RadioWave","📺",// ok
 
 // Generation Human + 1
-"Blood","Human","Blade","?",
-"CarbonDioxide","Human","Air","?",
-"Cold","Rain","Human","?","Sickness","Rain","Human","?", // DISAMBIGUATE
-"Corpse","Fire","Human","?","Corpse","Human","Gun","?",
-"Drunk","Human","Alcohol","?",
-"Electrician","Electricity","Human","?",
-"Tools","Metal","Human","?",
-"Fireman","Fire","Human","?",
-"House","Brick","Human","?",
-"Hut","Stone","Human","?",
-"Idea","Light Bulb","Human","?",
-"Jedi","Lightsaber","Human","?",
-"Love","Human","Human","?","Sex","Human","Human","?",//DISAMBIGUATE
-"Music","Sound","Human","?",
-"Nerd","Glasses","Human","?",
-"Scarecrow","Human","Hay","?",
-"Surfer","Wave","Human","?",
-"Warrior","Sword","Human","?",
-"Watch","Human","Clock","?",
-"Wizard","Energy","Human","?",
-"Death","Human","Life","",
+"Blood","Human","Blade","💧 &nbsp; 💧",// ok
+"CarbonDioxide","Human","Air","C O ²",// ok
+"Cold","Rain","Human","⌇⌇&nbsp; 😓 &nbsp; ⌇⌇",// ok
+"Corpse","Fire","Human","☠","Corpse","Human","Gun","☠",// ok
+"Drunk","Human","Alcohol","😵",// ok
+"Electrician","Electricity","Human","😁🔌",// ok
+"Tools","Metal","Human","⚒",// ok
+"Fireman","Fire","Human","🔥😷🔥",// ok
+"House","Brick","Human","🏠",// ok
+"Idea","LightBulb","Human","😤💡",// ok
+"Love","Human","Human","❤",// ok
+"Music","Sound","Human","♬ ♪",// ok
+"Surfer","Wave","Human","🌊<u>🏃</u>",// ok
+"Watch","Human","Clock","⌚",// ok
+"Death","Human","Life","✝",// ok
 
 // Generation Human + 2
-"Engineer","Human","tools","?",
-"Shark","Blood","Ocean","?",
-"Vampire","Blood","Human","?",
-"Fridge","Metal","Cold","?",
-"Snow","Rain","Cold","?",
-"Frankenstein","Electricity","Corpse","?",
-"Grave","Earth","Corpse","?",
-"Mummy","Pyramid","Corpse","?",
-"Skeleton","Time","Corpse","?","Bone","Time","Corpse","?",//DISAMBIGUATE
-"Zombie","Life","Corpse","",
-"Umbrella","Rain","tools","?",
-"Computer","Nerd","tools","?",
-"Field","Earth","tools","?",
-"LawnMower","tools","Grass","?",
-"Pitchfork","tools","Hay","?",
-"Statue","Stone","tools","?",
-"Thread","Cotton","tools","?",
-"Family","Human","House","?",
-"Igloo","Ice","House","?",
-"Skyscraper","House","Glass","?","Skyscraper","Sky","House","?",
-"Village","House","House","?",
-"Windmill","Wind","House","?",
-"Ash","Fire","House","▲","Ash","Fire","Human","▲","Ash","Fire","Wood","▲",
-"Rose","Love","Plant","?",
-"Styx","Water","Death","",
+"Engineer","Human","Tools","😲 ⚒",// ok
+"Fridge","Metal","Cold","𐌇",// ok
+"Snow","Rain","Cold","❄",// ok
+"Grave","Earth","Corpse","†<br>෴",// ok
+"Bone","Time","Corpse","🍖",// ok
+"Umbrella","Rain","Tools","☂",// ok
+"Field","Earth","Tools","෴෴<br><br>෴෴",// ok
+"Pitchfork","Tools","Hay","&nbsp; |<br>⋔",// ok
+"Statue","Stone","Tools","🗽",// ok
+"Family","Human","House","🏠👫",// ok
+"Village","House","House","🏠 🏠<br><br>🏠 🏠 🏠",// ok
+"Ash","Fire","House","▲","Ash","Fire","Human","▲","Ash","Fire","Wood","▲",// ok
+"Rose","Love","Plant","🌹",// ok
 
 // Generation Human + 3
-"Bat","Vampire","Air","","Bat","Sky","Mouse","?",
-"Avalanche","Energy","Snow","?",
-"Snowball","Human","Snow","?","Snowman","Snow","Human","?",//DISAMBIGUATE
-"Gravestone","Stone","Grave","?",
-"Graveyard","Grave","Grave","?",
-"Internet","Computer","Computer","?",
-"AI","Computer","Life","",
-"Cyborg","Computer","Human","?",
-"Farmer","Human","Field","?",
-"Fountain","Statue","Water","?",
-"Fabric","Thread","tools","?",
-"City","Village","Village","?",
-"WindTurbine","Windmill","Electricity","?",
+"Snowman","Snow","Human","☃",// ok
+"Gravestone","Stone","Grave","✝",// ok
+"Graveyard","Grave","Grave","✝ ✝ ✝",// ok
+"Farmer","Human","Field","😋🐮",// ok
+"Fountain","Statue","Water","⛲",// ok
 
 // Generation Human + 4
-"Batman","Bat","Human","?",
-"Cyberspace","Internet","Life","",
-"Farm","Farmer","House","?","Farm","Farmer","Barn","?",
-"Clothes","Fabric","Human","?",
-"Wire","Electricity","Metal","?",
+"Farm","Farmer","House","෴🏠෴",// ok
+"Livestock","Life","Farmer","🐔 🐷",// ok
+"Wire","Electricity","Metal","ಊ",// ok
 
 // Generation Human + 5
-"Livestock","Life","Farmer","?",
-"Dynamite","Wire","Gunpowder","?",
+"Dynamite","Wire","Gunpowder","<div style=margin-top:-30px>&nbsp;ˌ<br><br><br>⌷",// ok
+"Horse","Hay","Livestock","🐎",// ok
+"Pig","Mud","Livestock","🐷",// ok
+"Sheep","Cloud","Livestock","🐑",// ok
+"Cow","Livestock","Grass","🐮",// ok
 
 // Generation Human + 6
-"Goat","Livestock","Mountain","?",
-"Horse","Hay","Livestock","?",
-"Pig","Mud","Livestock","?",
-"Sheep","Cloud","Livestock","?",
-"Barn","House","Livestock","?",
-"Cow","Livestock","Grass","?",
+"Bacon","Fire","Pig","♨",// ok
+"Meat","Tools","Cow","🍖",// ok
+"Milk","Farmer","Cow","🍵",// ok
 
 // Generation Human + 7
-"Faun","Human","Goat","?",
-"Hippo","Horse","River","?",
-"Seahorse","Horse","Ocean","?",
-"Centaur","Human","Horse","?",
-"Bacon","Fire","Pig","?",
-"Wool","Sheep","tools","?",
-"Leather","Blade","Cow","?",
-"Manatee","Cow","Sea","?",
-"Meat","tools","Cow","?",
-"Milk","Farmer","Cow","?",
-"Minotaur","Cow","Human","?",
+"Sweater","Sheep","Tools","👕",// ok
+"Butter","Milk","Pressure","ﬦ",// ok
+"Cheese","Time","Milk","🍠",// ok
+"IceCream","Cold","Milk","🍦","IceCream","Ice","Milk","🍦",// ok
 
 // Generation Human + 8
-"Sweater","Wool","tools","?","Fabric","Tools","Wool","?",//DISAMBIGUATE
-"Saddle","Horse","Leather","?",
-"Ham","Meat","Smoke","?",
-"Steak","Fire","Meat","?",
-"Butcher","Human","Meat","?",
-"Butter","Milk","Pressure","?",
-"Cheese","Time","Milk","?",
-"IceCream","Cold","Milk","?","IceCream","Ice","Milk","?",
+"Moon","Sky","Cheese","☾",// ok
+"MilkShake","Milk","IceCream","🍺",// ok
 
 // Generation Human + 9
-"Moon","Sky","Cheese","?",
-"MilkShake","Milk","IceCream","?",
+"Night","Time","Moon","☾ ☆",// ok
+"Eclipse","Sun","Moon","🌔",// ok
 
 // Generation Human + 10
-"Night","Time","Moon","?",
-"Tide","Moon","Sea","?",
-"Astronaut","Human","Moon","?",
-"Eclipse","Sun","Moon","?",
+"Star","Night","Sky","☆",// ok
+"Ghost","Graveyard","Night","👻",// ok
 
 // Generation Human + 11
-"Star","Night","Sky","?",
-"Twilight","Day","Night","?",
-"Ghost","Graveyard","Night","?",
+"Constellation","Star","Star","<div style=margin-top:-10px>☆<br><br>☆ &nbsp; ☆",// ok
+"Shuriken","Star","Blade","✧",// ok
+"Space","Star","Sky","&nbsp;",// ok
 
 // Generation Human + 12
-"BlackHole","Star","Pressure","?",
-"Constellation","Star","Star","?","Galaxy","Star","Star","?",//DISAMBIGUATE
-"Shuriken","Star","Blade","?",
-"Space","Star","Sky","?",
+"Ninja","Human","Shuriken","🙅",// ok
+"Void","Space","Space","&nbsp;&nbsp;",// ok
+"Meteoroid","Stone","Space","🌠",// ok
 
 // Generation Human + 13
-"Ninja","Human","Shuriken","?",
-"Planet","Earth","Space","?",
-"Void","Space","Space","?",
-"Meteoroid","Stone","Space","?",
-"MilkyWay","Milk","Space","?",
+"Alien","Life","Void","👽","Alien","Space","Life","👽",// ok
+"LightBulb","Void","Glass","💡",// ok, dup
+"RadioWave","Void","Electricity","(( 📻 ))",// ok, dup
 
-// Generation Human + 14
-"SolarSystem","Sun","Planet","?",
-"Alien","Life","Void","?","Alien","Space","Life","?",
-"Lightbulb","Void","Glass","?",
-"Radiowave","Void","Electricity","?",
+];
 
-// Generation Human + 15
-"TV","Lightbulb","Radiowave","?",
-"Radar","Air","Radiowave","",
+// Music
+jsonSong = {
+    "songLen": 123,
+    "songData": [
+        {
+            "osc1_oct": 9,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 161,
+            "osc1_waveform": 0,
+            "osc2_oct": 9,
+            "osc2_det": 0,
+            "osc2_detune": 4,
+            "osc2_xenv": 0,
+            "osc2_vol": 182,
+            "osc2_waveform": 0,
+            "noise_fader": 0,
+            "env_attack": 100,
+            "env_sustain": 1818,
+            "env_release": 18181,
+            "env_master": 192,
+            "fx_filter": 0,
+            "fx_freq": 0,
+            "fx_resonance": 254,
+            "fx_delay_time": 6,
+            "fx_delay_amt": 108,
+            "fx_pan_freq": 3,
+            "fx_pan_amt": 61,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 0,
+            "lfo_freq": 3,
+            "lfo_amt": 94,
+            "lfo_waveform": 2,
+            "p": [
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                0,
+                2,
+                3,
+                4,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                5
+            ],
+            "c": [
+                {
+                    "n": [
+                        142,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        140,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        138,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        138,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        140,
+                        0,
+                        138,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        130,
+                        0,
+                        142,
+                        0,
+                        140,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        138,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        130,
+                        0,
+                        142,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        138,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        123,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        130,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        128,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        119,
+                        131,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        126,
+                        114,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 8,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 0,
+            "osc1_waveform": 0,
+            "osc2_oct": 8,
+            "osc2_det": 0,
+            "osc2_detune": 0,
+            "osc2_xenv": 0,
+            "osc2_vol": 0,
+            "osc2_waveform": 0,
+            "noise_fader": 19,
+            "env_attack": 100,
+            "env_sustain": 0,
+            "env_release": 3636,
+            "env_master": 192,
+            "fx_filter": 1,
+            "fx_freq": 8100,
+            "fx_resonance": 156,
+            "fx_delay_time": 2,
+            "fx_delay_amt": 22,
+            "fx_pan_freq": 3,
+            "fx_pan_amt": 43,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 0,
+            "lfo_freq": 0,
+            "lfo_amt": 0,
+            "lfo_waveform": 0,
+            "p": [
+                0,
+                0,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2,
+                1,
+                2
+            ],
+            "c": [
+                {
+                    "n": [
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135,
+                        0,
+                        135,
+                        0,
+                        135,
+                        0,
+                        135,
+                        135
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 6,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 192,
+            "osc1_waveform": 1,
+            "osc2_oct": 8,
+            "osc2_det": 0,
+            "osc2_detune": 8,
+            "osc2_xenv": 0,
+            "osc2_vol": 82,
+            "osc2_waveform": 2,
+            "noise_fader": 0,
+            "env_attack": 100,
+            "env_sustain": 4545,
+            "env_release": 2727,
+            "env_master": 192,
+            "fx_filter": 3,
+            "fx_freq": 2700,
+            "fx_resonance": 85,
+            "fx_delay_time": 6,
+            "fx_delay_amt": 60,
+            "fx_pan_freq": 6,
+            "fx_pan_amt": 86,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 1,
+            "lfo_freq": 7,
+            "lfo_amt": 106,
+            "lfo_waveform": 0,
+            "p": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                2,
+                3,
+                1,
+                1,
+                2,
+                3,
+                1,
+                1,
+                2,
+                3,
+                1,
+                1,
+                2,
+                3,
+                1,
+                1,
+                2,
+                3
+            ],
+            "c": [
+                {
+                    "n": [
+                        135,
+                        135,
+                        147,
+                        135,
+                        0,
+                        135,
+                        147,
+                        135,
+                        135,
+                        135,
+                        147,
+                        135,
+                        0,
+                        135,
+                        147,
+                        135,
+                        135,
+                        135,
+                        147,
+                        135,
+                        0,
+                        135,
+                        147,
+                        135,
+                        135,
+                        135,
+                        147,
+                        135,
+                        0,
+                        135,
+                        147,
+                        135
+                    ]
+                },
+                {
+                    "n": [
+                        140,
+                        140,
+                        152,
+                        140,
+                        0,
+                        140,
+                        152,
+                        140,
+                        140,
+                        140,
+                        152,
+                        140,
+                        0,
+                        140,
+                        152,
+                        140,
+                        140,
+                        140,
+                        152,
+                        140,
+                        0,
+                        140,
+                        152,
+                        140,
+                        140,
+                        140,
+                        152,
+                        140,
+                        0,
+                        140,
+                        152,
+                        142
+                    ]
+                },
+                {
+                    "n": [
+                        131,
+                        131,
+                        143,
+                        131,
+                        0,
+                        131,
+                        143,
+                        131,
+                        131,
+                        131,
+                        143,
+                        131,
+                        0,
+                        131,
+                        143,
+                        131,
+                        138,
+                        138,
+                        150,
+                        138,
+                        0,
+                        138,
+                        150,
+                        138,
+                        138,
+                        138,
+                        150,
+                        138,
+                        0,
+                        138,
+                        150,
+                        137
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 7,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 187,
+            "osc1_waveform": 2,
+            "osc2_oct": 5,
+            "osc2_det": 0,
+            "osc2_detune": 2,
+            "osc2_xenv": 1,
+            "osc2_vol": 161,
+            "osc2_waveform": 2,
+            "noise_fader": 0,
+            "env_attack": 100,
+            "env_sustain": 1818,
+            "env_release": 2727,
+            "env_master": 123,
+            "fx_filter": 1,
+            "fx_freq": 1900,
+            "fx_resonance": 162,
+            "fx_delay_time": 2,
+            "fx_delay_amt": 153,
+            "fx_pan_freq": 6,
+            "fx_pan_amt": 61,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 1,
+            "lfo_freq": 2,
+            "lfo_amt": 196,
+            "lfo_waveform": 3,
+            "p": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                1,
+                2,
+                3
+            ],
+            "c": [
+                {
+                    "n": [
+                        135,
+                        135,
+                        138,
+                        135,
+                        142,
+                        135,
+                        140,
+                        138,
+                        135,
+                        135,
+                        138,
+                        135,
+                        142,
+                        135,
+                        140,
+                        138,
+                        135,
+                        135,
+                        138,
+                        135,
+                        142,
+                        135,
+                        140,
+                        138,
+                        135,
+                        135,
+                        138,
+                        135,
+                        142,
+                        135,
+                        140,
+                        138
+                    ]
+                },
+                {
+                    "n": [
+                        143,
+                        143,
+                        155,
+                        143,
+                        0,
+                        143,
+                        155,
+                        143,
+                        143,
+                        143,
+                        150,
+                        143,
+                        147,
+                        143,
+                        140,
+                        143,
+                        138,
+                        138,
+                        143,
+                        138,
+                        143,
+                        140,
+                        138,
+                        140,
+                        138,
+                        138,
+                        143,
+                        138,
+                        142,
+                        140,
+                        138,
+                        140
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 8,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 1,
+            "osc1_vol": 192,
+            "osc1_waveform": 0,
+            "osc2_oct": 7,
+            "osc2_det": 0,
+            "osc2_detune": 0,
+            "osc2_xenv": 1,
+            "osc2_vol": 70,
+            "osc2_waveform": 2,
+            "noise_fader": 8,
+            "env_attack": 100,
+            "env_sustain": 0,
+            "env_release": 9090,
+            "env_master": 164,
+            "fx_filter": 2,
+            "fx_freq": 5500,
+            "fx_resonance": 240,
+            "fx_delay_time": 6,
+            "fx_delay_amt": 51,
+            "fx_pan_freq": 3,
+            "fx_pan_amt": 66,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 0,
+            "lfo_freq": 0,
+            "lfo_amt": 0,
+            "lfo_waveform": 0,
+            "p": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1,
+                1
+            ],
+            "c": [
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 7,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 192,
+            "osc1_waveform": 2,
+            "osc2_oct": 8,
+            "osc2_det": 0,
+            "osc2_detune": 6,
+            "osc2_xenv": 0,
+            "osc2_vol": 184,
+            "osc2_waveform": 2,
+            "noise_fader": 21,
+            "env_attack": 40000,
+            "env_sustain": 25454,
+            "env_release": 90909,
+            "env_master": 77,
+            "fx_filter": 2,
+            "fx_freq": 7100,
+            "fx_resonance": 188,
+            "fx_delay_time": 8,
+            "fx_delay_amt": 147,
+            "fx_pan_freq": 4,
+            "fx_pan_amt": 69,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 1,
+            "lfo_freq": 7,
+            "lfo_amt": 176,
+            "lfo_waveform": 1,
+            "p": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                2,
+                3,
+                4,
+                1,
+                2,
+                3,
+                4,
+                1,
+                2,
+                3,
+                4,
+                1,
+                2,
+                3,
+                4,
+                5
+            ],
+            "c": [
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        142,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        128,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        143,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        138,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        },
+        {
+            "osc1_oct": 8,
+            "osc1_det": 0,
+            "osc1_detune": 0,
+            "osc1_xenv": 0,
+            "osc1_vol": 0,
+            "osc1_waveform": 0,
+            "osc2_oct": 8,
+            "osc2_det": 0,
+            "osc2_detune": 0,
+            "osc2_xenv": 0,
+            "osc2_vol": 0,
+            "osc2_waveform": 0,
+            "noise_fader": 148,
+            "env_attack": 3636,
+            "env_sustain": 4545,
+            "env_release": 39090,
+            "env_master": 136,
+            "fx_filter": 2,
+            "fx_freq": 3100,
+            "fx_resonance": 122,
+            "fx_delay_time": 5,
+            "fx_delay_amt": 132,
+            "fx_pan_freq": 0,
+            "fx_pan_amt": 0,
+            "lfo_osc1_freq": 0,
+            "lfo_fx_freq": 1,
+            "lfo_freq": 5,
+            "lfo_amt": 147,
+            "lfo_waveform": 0,
+            "p": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                2,
+                1,
+                3,
+                1,
+                2,
+                1,
+                3,
+                4
+            ],
+            "c": [
+                {
+                    "n": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        162,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        151,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        135,
+                        0,
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                },
+                {
+                    "n": [
+                        135,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            ]
+        }
+    ],
+    "rowLen": 5606,
+    "endPattern": 30
+};
 
-]
+//
+// Sonant-X
+//
+// Copyright (c) 2014 Nicolas Vanhoren
+//
+// Sonant-X is a fork of js-sonant by Marcus Geelnard and Jake Taylor. It is
+// still published using the same license (zlib license, see below).
+//
+// Copyright (c) 2011 Marcus Geelnard
+// Copyright (c) 2008-2009 Jake Taylor
+//
+// This software is provided 'as-is', without any express or implied
+// warranty. In no event will the authors be held liable for any damages
+// arising from the use of this software.
+//
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
+//
+// 1. The origin of this software must not be misrepresented; you must not
+//    claim that you wrote the original software. If you use this software
+//    in a product, an acknowledgment in the product documentation would be
+//    appreciated but is not required.
+//
+// 2. Altered source versions must be plainly marked as such, and must not be
+//    misrepresented as being the original software.
+//
+// 3. This notice may not be removed or altered from any source
+//    distribution.
+
+var sonantx;
+(function() {
+"use strict";
+sonantx = {};
+
+var WAVE_SPS = 44100;                    // Samples per second
+var WAVE_CHAN = 2;                       // Channels
+var MAX_TIME = 33; // maximum time, in millis, that the generator can use consecutively
+
+var audioCtx = null;
+
+// Oscillators
+function osc_sin(value)
+{
+    return Math.sin(value * 6.283184);
+}
+
+function osc_square(value)
+{
+    if(osc_sin(value) < 0) return -1;
+    return 1;
+}
+
+function osc_saw(value)
+{
+    return (value % 1) - 0.5;
+}
+
+function osc_tri(value)
+{
+    var v2 = (value % 1) * 4;
+    if(v2 < 2) return v2 - 1;
+    return 3 - v2;
+}
+
+// Array of oscillator functions
+var oscillators =
+[
+    osc_sin,
+    osc_square,
+    osc_saw,
+    osc_tri
+];
+
+function getnotefreq(n)
+{
+    return 0.00390625 * Math.pow(1.059463094, n - 128);
+}
+
+function genBuffer(waveSize, callBack) {
+    setTimeout(function() {
+        // Create the channel work buffer
+        var buf = new Uint8Array(waveSize * WAVE_CHAN * 2);
+        var b = buf.length - 2;
+        var iterate = function() {
+            var begin = new Date();
+            var count = 0;
+            while(b >= 0)
+            {
+                buf[b] = 0;
+                buf[b + 1] = 128;
+                b -= 2;
+                count += 1;
+                if (count % 1000 === 0 && (new Date() - begin) > MAX_TIME) {
+                    setTimeout(iterate, 0);
+                    return;
+                }
+            }
+            setTimeout(function() {callBack(buf);}, 0);
+        };
+        setTimeout(iterate, 0);
+    }, 0);
+}
+
+function applyDelay(chnBuf, waveSamples, instr, rowLen, callBack) {
+    var p1 = (instr.fx_delay_time * rowLen) >> 1;
+    var t1 = instr.fx_delay_amt / 255;
+
+    var n1 = 0;
+    var iterate = function() {
+        var beginning = new Date();
+        var count = 0;
+        while(n1 < waveSamples - p1)
+        {
+            var b1 = 4 * n1;
+            var l = 4 * (n1 + p1);
+
+            // Left channel = left + right[-p1] * t1
+            var x1 = chnBuf[l] + (chnBuf[l+1] << 8) +
+                (chnBuf[b1+2] + (chnBuf[b1+3] << 8) - 32768) * t1;
+            chnBuf[l] = x1 & 255;
+            chnBuf[l+1] = (x1 >> 8) & 255;
+
+            // Right channel = right + left[-p1] * t1
+            x1 = chnBuf[l+2] + (chnBuf[l+3] << 8) +
+                (chnBuf[b1] + (chnBuf[b1+1] << 8) - 32768) * t1;
+            chnBuf[l+2] = x1 & 255;
+            chnBuf[l+3] = (x1 >> 8) & 255;
+            ++n1;
+            count += 1;
+            if (count % 1000 === 0 && (new Date() - beginning) > MAX_TIME) {
+                setTimeout(iterate, 0);
+                return;
+            }
+        }
+        setTimeout(callBack, 0);
+    };
+    setTimeout(iterate, 0);
+}
+
+sonantx.AudioGenerator = function(mixBuf) {
+    this.mixBuf = mixBuf;
+    this.waveSize = mixBuf.length / WAVE_CHAN / 2;
+};
+sonantx.AudioGenerator.prototype.getWave = function() {
+    var mixBuf = this.mixBuf;
+    var waveSize = this.waveSize;
+    // Local variables
+    var b, k, x, wave, l1, l2, s, y;
+
+    // Turn critical object properties into local variables (performance)
+    var waveBytes = waveSize * WAVE_CHAN * 2;
+
+    // Convert to a WAVE file (in a binary string)
+    l1 = waveBytes - 8;
+    l2 = l1 - 36;
+    wave = String.fromCharCode(82,73,70,70,
+                               l1 & 255,(l1 >> 8) & 255,(l1 >> 16) & 255,(l1 >> 24) & 255,
+                               87,65,86,69,102,109,116,32,16,0,0,0,1,0,2,0,
+                               68,172,0,0,16,177,2,0,4,0,16,0,100,97,116,97,
+                               l2 & 255,(l2 >> 8) & 255,(l2 >> 16) & 255,(l2 >> 24) & 255);
+    b = 0;
+    while(b < waveBytes)
+    {
+        // This is a GC & speed trick: don't add one char at a time - batch up
+        // larger partial strings
+        x = "";
+        for (k = 0; k < 256 && b < waveBytes; ++k, b += 2)
+        {
+            // Note: We amplify and clamp here
+            y = 4 * (mixBuf[b] + (mixBuf[b+1] << 8) - 32768);
+            y = y < -32768 ? -32768 : (y > 32767 ? 32767 : y);
+            x += String.fromCharCode(y & 255, (y >> 8) & 255);
+        }
+        wave += x;
+    }
+    return wave;
+};
+sonantx.AudioGenerator.prototype.getAudio = function() {
+    var wave = this.getWave();
+    var a = new Audio("data:audio/wav;base64," + btoa(wave));
+    a.preload = "none";
+    a.load();
+    return a;
+};
+sonantx.AudioGenerator.prototype.getAudioBuffer = function(callBack) {
+    if (audioCtx === null)
+        audioCtx = new AudioContext();
+    var mixBuf = this.mixBuf;
+    var waveSize = this.waveSize;
+
+    var waveBytes = waveSize * WAVE_CHAN * 2;
+    var buffer = audioCtx.createBuffer(WAVE_CHAN, this.waveSize, WAVE_SPS); // Create Mono Source Buffer from Raw Binary
+    var lchan = buffer.getChannelData(0);
+    var rchan = buffer.getChannelData(1);
+    var b = 0;
+    var iterate = function() {
+        var beginning = new Date();
+        var count = 0;
+        while (b < (waveBytes / 2)) {
+            var y = 4 * (mixBuf[b * 4] + (mixBuf[(b * 4) + 1] << 8) - 32768);
+            y = y < -32768 ? -32768 : (y > 32767 ? 32767 : y);
+            lchan[b] = y / 32768;
+            y = 4 * (mixBuf[(b * 4) + 2] + (mixBuf[(b * 4) + 3] << 8) - 32768);
+            y = y < -32768 ? -32768 : (y > 32767 ? 32767 : y);
+            rchan[b] = y / 32768;
+            b += 1;
+            count += 1;
+            if (count % 1000 === 0 && new Date() - beginning > MAX_TIME) {
+                setTimeout(iterate, 0);
+                return;
+            }
+        }
+        setTimeout(function() {callBack(buffer);}, 0);
+    };
+    setTimeout(iterate, 0);
+};
+
+sonantx.SoundGenerator = function(instr, rowLen) {
+    this.instr = instr;
+    this.rowLen = rowLen || 5605;
+
+    this.osc_lfo = oscillators[instr.lfo_waveform];
+    this.osc1 = oscillators[instr.osc1_waveform];
+    this.osc2 = oscillators[instr.osc2_waveform];
+    this.attack = instr.env_attack;
+    this.sustain = instr.env_sustain;
+    this.release = instr.env_release;
+    this.panFreq = Math.pow(2, instr.fx_pan_freq - 8) / this.rowLen;
+    this.lfoFreq = Math.pow(2, instr.lfo_freq - 8) / this.rowLen;
+};
+sonantx.SoundGenerator.prototype.genSound = function(n, chnBuf, currentpos) {
+    var marker = new Date();
+    var c1 = 0;
+    var c2 = 0;
+
+    // Precalculate frequencues
+    var o1t = getnotefreq(n + (this.instr.osc1_oct - 8) * 12 + this.instr.osc1_det) * (1 + 0.0008 * this.instr.osc1_detune);
+    var o2t = getnotefreq(n + (this.instr.osc2_oct - 8) * 12 + this.instr.osc2_det) * (1 + 0.0008 * this.instr.osc2_detune);
+
+    // State variable init
+    var q = this.instr.fx_resonance / 255;
+    var low = 0;
+    var band = 0;
+    for (var j = this.attack + this.sustain + this.release - 1; j >= 0; --j)
+    {
+        var k = j + currentpos;
+
+        // LFO
+        var lfor = this.osc_lfo(k * this.lfoFreq) * this.instr.lfo_amt / 512 + 0.5;
+
+        // Envelope
+        var e = 1;
+        if(j < this.attack)
+            e = j / this.attack;
+        else if(j >= this.attack + this.sustain)
+            e -= (j - this.attack - this.sustain) / this.release;
+
+        // Oscillator 1
+        var t = o1t;
+        if(this.instr.lfo_osc1_freq) t += lfor;
+        if(this.instr.osc1_xenv) t *= e * e;
+        c1 += t;
+        var rsample = this.osc1(c1) * this.instr.osc1_vol;
+
+        // Oscillator 2
+        t = o2t;
+        if(this.instr.osc2_xenv) t *= e * e;
+        c2 += t;
+        rsample += this.osc2(c2) * this.instr.osc2_vol;
+
+        // Noise oscillator
+        if(this.instr.noise_fader) rsample += (2*Math.random()-1) * this.instr.noise_fader * e;
+
+        rsample *= e / 255;
+
+        // State variable filter
+        var f = this.instr.fx_freq;
+        if(this.instr.lfo_fx_freq) f *= lfor;
+        f = 1.5 * Math.sin(f * 3.141592 / WAVE_SPS);
+        low += f * band;
+        var high = q * (rsample - band) - low;
+        band += f * high;
+        switch(this.instr.fx_filter)
+        {
+            case 1: // Hipass
+                rsample = high;
+                break;
+            case 2: // Lopass
+                rsample = low;
+                break;
+            case 3: // Bandpass
+                rsample = band;
+                break;
+            case 4: // Notch
+                rsample = low + high;
+                break;
+            default:
+        }
+
+        // Panning & master volume
+        t = osc_sin(k * this.panFreq) * this.instr.fx_pan_amt / 512 + 0.5;
+        rsample *= 39 * this.instr.env_master;
+
+        // Add to 16-bit channel buffer
+        k = k * 4;
+        if (k + 3 < chnBuf.length) {
+            var x = chnBuf[k] + (chnBuf[k+1] << 8) + rsample * (1 - t);
+            chnBuf[k] = x & 255;
+            chnBuf[k+1] = (x >> 8) & 255;
+            x = chnBuf[k+2] + (chnBuf[k+3] << 8) + rsample * t;
+            chnBuf[k+2] = x & 255;
+            chnBuf[k+3] = (x >> 8) & 255;
+        }
+    }
+};
+sonantx.SoundGenerator.prototype.getAudioGenerator = function(n, callBack) {
+    var bufferSize = (this.attack + this.sustain + this.release - 1) + (32 * this.rowLen);
+    var self = this;
+    genBuffer(bufferSize, function(buffer) {
+        self.genSound(n, buffer, 0);
+        applyDelay(buffer, bufferSize, self.instr, self.rowLen, function() {
+            callBack(new sonantx.AudioGenerator(buffer));
+        });
+    });
+};
+sonantx.SoundGenerator.prototype.createAudio = function(n, callBack) {
+    this.getAudioGenerator(n, function(ag) {
+        callBack(ag.getAudio());
+    });
+};
+sonantx.SoundGenerator.prototype.createAudioBuffer = function(n, callBack) {
+    this.getAudioGenerator(n, function(ag) {
+        ag.getAudioBuffer(callBack);
+    });
+};
+
+sonantx.MusicGenerator = function(song) {
+    this.song = song;
+    // Wave data configuration
+    this.waveSize = WAVE_SPS * song.songLen; // Total song size (in samples)
+};
+sonantx.MusicGenerator.prototype.generateTrack = function (instr, mixBuf, callBack) {
+    var self = this;
+    genBuffer(this.waveSize, function(chnBuf) {
+        // Preload/precalc some properties/expressions (for improved performance)
+        var waveSamples = self.waveSize,
+            waveBytes = self.waveSize * WAVE_CHAN * 2,
+            rowLen = self.song.rowLen,
+            endPattern = self.song.endPattern,
+            soundGen = new sonantx.SoundGenerator(instr, rowLen);
+
+        var currentpos = 0;
+        var p = 0;
+        var row = 0;
+        var recordSounds = function() {
+            var beginning = new Date();
+            while (true) {
+                if (row === 32) {
+                    row = 0;
+                    p += 1;
+                    continue;
+                }
+                if (p === endPattern - 1) {
+                    setTimeout(delay, 0);
+                    return;
+                }
+                var cp = instr.p[p];
+                if (cp) {
+                    var n = instr.c[cp - 1].n[row];
+                    if (n) {
+                        soundGen.genSound(n, chnBuf, currentpos);
+                    }
+                }
+                currentpos += rowLen;
+                row += 1;
+                if (new Date() - beginning > MAX_TIME) {
+                    setTimeout(recordSounds, 0);
+                    return;
+                }
+            }
+        };
+
+        var delay = function() {
+            applyDelay(chnBuf, waveSamples, instr, rowLen, finalize);
+        };
+
+        var b2 = 0;
+        var finalize = function() {
+            var beginning = new Date();
+            var count = 0;
+            // Add to mix buffer
+            while(b2 < waveBytes)
+            {
+                var x2 = mixBuf[b2] + (mixBuf[b2+1] << 8) + chnBuf[b2] + (chnBuf[b2+1] << 8) - 32768;
+                mixBuf[b2] = x2 & 255;
+                mixBuf[b2+1] = (x2 >> 8) & 255;
+                b2 += 2;
+                count += 1;
+                if (count % 1000 === 0 && (new Date() - beginning) > MAX_TIME) {
+                    setTimeout(finalize, 0);
+                    return;
+                }
+            }
+            setTimeout(callBack, 0);
+        };
+        setTimeout(recordSounds, 0);
+    });
+};
+sonantx.MusicGenerator.prototype.getAudioGenerator = function(callBack) {
+    var self = this;
+    genBuffer(this.waveSize, function(mixBuf) {
+        var t = 0;
+        var recu = function() {
+            if (t < self.song.songData.length) {
+                t += 1;
+                self.generateTrack(self.song.songData[t - 1], mixBuf, recu);
+            } else {
+                callBack(new sonantx.AudioGenerator(mixBuf));
+            }
+        };
+        recu();
+    });
+};
+sonantx.MusicGenerator.prototype.createAudio = function(callBack) {
+    this.getAudioGenerator(function(ag) {
+        callBack(ag.getAudio());
+    });
+};
+sonantx.MusicGenerator.prototype.createAudioBuffer = function(callBack) {
+    this.getAudioGenerator(function(ag) {
+        ag.getAudioBuffer(callBack);
+    });
+};
+
+})();
+
+
+var songGen = new sonantx.MusicGenerator(jsonSong);
+
+songGen.createAudio(function(audio) {
+  audio.play();
+})
+    
+setInterval(
+  function(){
+    songGen.createAudio(function(audio) {
+      audio.play();
+    });
+  },
+  60000
+)
 
 </script>
